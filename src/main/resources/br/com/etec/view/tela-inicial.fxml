@@ -5,7 +5,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane
         fx:controller="br.com.etec.controller.Operacoes"
         maxHeight="-Infinity"
@@ -63,7 +62,8 @@
                     text="CADASTRAR"
                     AnchorPane.leftAnchor="10.0"
                     AnchorPane.rightAnchor="10.0"
-                    AnchorPane.topAnchor="320.0" />
+                    AnchorPane.topAnchor="320.0"
+                    onAction="#cadastrarUsuario" /> <!-- Adicionei esta linha -->
          </children>
       </AnchorPane>
    </children>
