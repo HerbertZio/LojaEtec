@@ -49,7 +49,7 @@ public class Operacoes {
             pstmt.setString(1, usuario);
             pstmt.setString(2, senha);
             ResultSet rs = pstmt.executeQuery();
-            return rs.next(); // Retorna true se houver um usuário correspondente
+            return rs.next();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
