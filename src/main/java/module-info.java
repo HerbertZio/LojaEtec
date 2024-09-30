@@ -2,6 +2,7 @@ module br.com.etec.lojaetec {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires java.sql; // Adicione esta linha
 
     // Exporta pacotes para os módulos JavaFX
     exports br.com.etec.model to javafx.graphics;
