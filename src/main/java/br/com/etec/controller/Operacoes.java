@@ -6,6 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,6 +40,20 @@ public class Operacoes {
             mostrarAlerta(Alert.AlertType.WARNING, "Informe a senha!", "Você precisa inserir a senha!");
         } else if (validarUsuarioNoBanco(nomeUsuario, senhaUsuario)) {
             mostrarAlerta(Alert.AlertType.CONFIRMATION, "Acesso permitido!", "Login bem sucedido!");
+
+            // Carregar a segunda tela
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/etec/view/segunda-tela.fxml"));
+                Parent root = loader.load();
+
+                Stage stage = (Stage) btnAcessar.getScene().getWindow(); // Obter o estágio atual
+                stage.setScene(new Scene(root));
+                stage.setTitle("Segunda Tela");
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+                mostrarAlerta(Alert.AlertType.ERROR, "Erro", "Não foi possível abrir a segunda tela.");
+            }
         } else {
             mostrarAlerta(Alert.AlertType.ERROR, "Acesso Negado!", "Usuário ou senha inválidos");
         }
