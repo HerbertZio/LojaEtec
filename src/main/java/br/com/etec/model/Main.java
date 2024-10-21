@@ -9,7 +9,7 @@ import javafx.stage.StageStyle;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/etec/view/tela-inicial.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/etec/view/segunda-tela.fxml"));
         Scene scene = new Scene(loader.load(),600,600);
 
         primaryStage.setScene(scene);
