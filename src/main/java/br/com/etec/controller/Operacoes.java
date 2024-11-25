@@ -3,6 +3,7 @@ package br.com.etec.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
@@ -28,6 +29,22 @@ public class Operacoes {
     private Button btnAcessar;
     @FXML
     private Button btnCadastrar;
+    @FXML
+    private Button btn_close;
+    @FXML
+    private Button btn_minimizar;
+    @FXML
+    private Parent rootPane;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+    @FXML
+    private void initialize() {
+        // Configura os eventos para arrastar a janela
+        rootPane.setOnMousePressed(this::handleMousePressed);
+        rootPane.setOnMouseDragged(this::handleMouseDragged);
+    }
 
     @FXML
     private void validarUsuario(ActionEvent event) {
@@ -112,5 +129,28 @@ public class Operacoes {
         alerta.setTitle(titulo);
         alerta.setContentText(mensagem);
         alerta.showAndWait();
+    }
+
+    @FXML
+    private void fecharJanela(ActionEvent event) {
+        Stage stage = (Stage) btn_close.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void minimizarJanela(ActionEvent event) {
+        Stage stage = (Stage) btn_minimizar.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    private void handleMousePressed(MouseEvent event) {
+        xOffset = event.getSceneX();
+        yOffset = event.getSceneY();
+    }
+
+    private void handleMouseDragged(MouseEvent event) {
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.setX(event.getScreenX() - xOffset);
+        stage.setY(event.getScreenY() - yOffset);
     }
 }
